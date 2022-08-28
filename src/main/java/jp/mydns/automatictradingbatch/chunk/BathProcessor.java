@@ -33,14 +33,15 @@ public class BathProcessor implements ItemProcessor<List<TradeSystem>,List<Trade
         log.info("processor:{}",item);
 
         //認証処理
-        service.authentication(user,password,url);
-
+        String token = service.authentication(user,password,url);
         //送信処理
-        
+        boolean sendFlg = service.sendData(item,url,token);
 
         //エンティティの値更新
-        for(TradeSystem ts :item){
-            ts.setSendFlg("1");
+        if(sendFlg){
+            for(TradeSystem ts :item){
+                ts.setSendFlg("1");
+            }
         }
         return item;
     }

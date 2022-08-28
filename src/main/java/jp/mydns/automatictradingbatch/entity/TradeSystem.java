@@ -25,7 +25,7 @@ public class TradeSystem {
     private int mountain;
     @Column(name="f_valley")
     private int valley;
-    @Column(name="f_sendFlg")
+    @Column(name="f_send_flg")
     private String sendFlg;
     //FK
     @Column(name="fk_sign")
@@ -60,12 +60,12 @@ public class TradeSystem {
     @OneToOne
     @JoinColumn(name="fk_id")
     private TradeSystem preFootkeyData;
-    public TradeSystem getPreFootkeyData() {
-        return preFootkeyData;
-    }
-    public void setPreFootkeyData(TradeSystem preFootkeyData) {
-        this.preFootkeyData = preFootkeyData;
-    }
+    // public TradeSystem getPreFootkeyData() {
+    //     return preFootkeyData;
+    // }
+    // public void setPreFootkeyData(TradeSystem preFootkeyData) {
+    //     this.preFootkeyData = preFootkeyData;
+    // }
     //
     public int getFkId() {
         return fkId;
