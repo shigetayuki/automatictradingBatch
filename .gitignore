@@ -36,4 +36,4 @@ out/
 ### VS Code ###
 .vscode/
 
-./src/main/resources/authentication.json
+src/main/resources/authentication.json
