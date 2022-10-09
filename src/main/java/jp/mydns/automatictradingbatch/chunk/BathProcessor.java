@@ -35,12 +35,9 @@ public class BathProcessor implements ItemProcessor<List<TradeSystem>,List<Trade
         //認証処理
         String token = service.authentication(user,password,url);
         //送信処理
-        boolean sendFlg = service.sendData(item,url,token);
+        service.sendData(item,url,token);
 
         //エンティティの値更新
-        if(!sendFlg){
-            throw new Exception("送信処理に失敗しました");
-        }
         return item;
     }
     

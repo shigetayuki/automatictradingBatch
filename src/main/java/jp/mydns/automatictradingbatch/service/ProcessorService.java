@@ -38,7 +38,7 @@ public class ProcessorService {
         return token;
     }
 
-    public boolean sendData(List<TradeSystem> item,String url, String token) throws IOException, InterruptedException {
+    public void sendData(List<TradeSystem> item,String url, String token) throws Exception {
         // HttpClientを生成
         HttpClient cli = HttpClient.newBuilder().build();
 
@@ -54,11 +54,9 @@ public class ProcessorService {
         //レスポンス
         String body =res.body();
 
-        if("OK".equals(body)){
-            return true;
-        }else{
+        if(!"OK".equals(body)){
             log.info(body);
-            return false;
+            throw new Exception(body);
         }
     }
     
