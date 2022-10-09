@@ -38,10 +38,8 @@ public class BathProcessor implements ItemProcessor<List<TradeSystem>,List<Trade
         boolean sendFlg = service.sendData(item,url,token);
 
         //エンティティの値更新
-        if(sendFlg){
-            for(TradeSystem ts :item){
-                ts.setSendFlg("1");
-            }
+        if(!sendFlg){
+            throw new Exception("送信処理に失敗しました");
         }
         return item;
     }

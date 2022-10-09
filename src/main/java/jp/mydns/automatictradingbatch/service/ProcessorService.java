@@ -6,7 +6,6 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -28,7 +27,7 @@ public class ProcessorService {
         HttpRequest req = HttpRequest.newBuilder()
         .uri(URI.create(url+"login"))
         .header("Content-Type", "application/json;charset=utf-8")
-        .POST(HttpRequest.BodyPublishers.ofFile(Paths.get("src/main/resources/authentication.json")))
+        .POST(HttpRequest.BodyPublishers.ofString("{\"userName\":\"" + user + "\",\"password\":\""+ password +"\"}"))
         .build();
 
         // リクエストを送信

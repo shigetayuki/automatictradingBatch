@@ -18,6 +18,10 @@ public class TradeSystemService {
         List<TradeSystem> systemList = null;
         try{
             systemList = dao.getMxList();
+            
+            if(systemList.size()==0){
+                systemList = null;
+            }
         }catch(Exception e){
             e.printStackTrace();
         }

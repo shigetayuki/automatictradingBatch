@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import jp.mydns.automatictradingbatch.entity.TradeSystem;
-import jp.mydns.automatictradingbatch.repository.TradeSystemRepository;
+import jp.mydns.automatictradingbatch.service.FootkeyService;
 import lombok.extern.slf4j.Slf4j;
 
 @Component
@@ -16,13 +16,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class BatchWriter implements ItemWriter<List<TradeSystem>>{
     @Autowired
-	private TradeSystemRepository repository;
+    private FootkeyService service;
 
     @Override
     public void write(List<? extends List<TradeSystem>> items) throws Exception {
         log.info("writer:{}",items);
         
-        repository.saveAllAndFlush(items.get(0));
+        service.updateFootkeySendFlg(items.get(0));
     }
     
 }
